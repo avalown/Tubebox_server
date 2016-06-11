@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="/stylesheets/materialize.min.css"  media="screen,projection"/>
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="/stylesheets/index.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="row">
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo right">Tubebox</a>
+            <ul id="nav-mobile" class="left hide-on-med-and-down">
+                <li><a href="/">Acceuil</a></li>
+            </ul>
+        </div>
+  </nav>
+
+    {% block content %}{% endblock %}
+</div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="js/materialize.min.js"></script>
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Contenue du pied de page</h5>
+                <p class="grey-text text-lighten-4">Un petit texte dans le pied de page</p>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Liens</h5>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="#!">Liens 1</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Liens 2</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Liens 3</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Liens 4</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            © 2014 Copyright Texte
+            <a class="grey-text text-lighten-4 right" href="#!">Plus de liens</a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
