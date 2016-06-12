@@ -1,4 +1,5 @@
 var express = require('express');
+var http = require('http');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -14,6 +15,15 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+var server = app.listen(8767);
+var io = require('socket.io').listen(server);
+
+io.sockets.on('connection', function (socket) {
+    console.log('Un client est connecté !');   
+    socket.on('message', function (message) {
+        console.log('titre joué : ' + message);
+    });	
+});
 
 // view engine setup
 // utilisation du moteur de swig pour les .html

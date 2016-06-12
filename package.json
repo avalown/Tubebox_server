@@ -15,6 +15,7 @@
     "bson": "0.4.x",
     "mongodb": "1.4",
     "monk": "1.x",
+    "socket.io": "~0.9.6",
     "serve-favicon": "~2.3.0"
   }
 }
