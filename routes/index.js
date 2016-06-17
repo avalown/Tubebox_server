@@ -6,7 +6,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Tubebox' });
 });
 
-router.post('/session', function(req, res) {
+router.get('/session', function(req, res) {
     var playlist = null;
     var db = req.db;
     var collection = db.get('sessions');
@@ -16,5 +16,5 @@ router.post('/session', function(req, res) {
         res.render('session', { title: 'Session en cours', playlist: playlist[0].music});
     });
 });
-         
+
 module.exports = router;

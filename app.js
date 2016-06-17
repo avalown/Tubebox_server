@@ -19,20 +19,34 @@ var server = app.listen(8767, "0.0.0.0")
 var io = require('socket.io').listen(server)
 
 io.on('connection', function (socket) {
-    console.log('New connection')
 
-    socket.on('new_session', function (code) {
-      console.log("New session")
-      socket.emit("status_response", "Je plaisantais :D")
-      console.log("Validation envoyée")
-    });
+    // Finds in the DB and sends the session corresponding to the session code
+    // Sends {} is the session doesn't exist
+    socket.on('session', function (code) {
+      console.log("Ask for session " + code)
+      var promise = db.get("sessions").findOne({ "code": code })
+      promise.on('success', function (session) {
+        var res = "{";
+        for(var i = 0; i < session.music.length; ++i) {
+          res += "\"" + i.toString() + "\" : \"" + session.music[i].url + "\""
+          if(i < session.music.length - 1)
+            res += ", "
+        }
+        res += "}"
+        console.log(res)
+        socket.emit('session', res)
+      })
+      promise.on('error', function(err) {
+        socket.emit("{}")
+      })
+    })
 });
 
 // view engine setup
 // utilisation du moteur de swig pour les .html
-app.engine('html', swig.renderFile);
+//app.engine('html', swig.renderFile);
 // utiliser le moteur de template pour les .html
-app.set('view engine', 'html');
+//app.set('view engine', 'html');
 // dossier des vues
 app.set('views', path.join(__dirname, 'views'));
 
