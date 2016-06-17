@@ -28,7 +28,7 @@ io.on('connection', function (socket) {
       promise.on('success', function (session) {
         var res = "{";
         for(var i = 0; i < session.music.length; ++i) {
-          res += "\"" + i.toString() + "\" : \"" + session.music[i].url + "\""
+          res += "\"" + i.toString() + "\" : \"" + session.music[i] + "\""
           if(i < session.music.length - 1)
             res += ", "
         }
